@@ -7,7 +7,7 @@ export const Form = styled.form`
 
   input {
     flex: 1;
-    border: 1px solid #eee;
+    border: 1px solid ${props => (props.error ? '#ff0000' : '#eee')};
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
@@ -22,6 +22,19 @@ const rotate = keyframes`
   to {
     transform: rotate(360deg);
   }
+`;
+
+export const Input = styled.input.attrs(() => ({
+  type: 'text',
+  placeholder: 'Adicionar Repositório'
+}))`
+  box-sizing: border-box;
+  border: 2px solid green;
+  ${props =>
+    props.failure &&
+    css`
+      border: 1px solid #ff0000;
+    `}
 `;
 
 export const SubmitButton = styled.button.attrs(props => ({
